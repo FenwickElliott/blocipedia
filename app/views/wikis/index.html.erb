@@ -1,17 +1,13 @@
-<!-- <h1>Wikis: Index</h1> -->
-<!-- <h3> <%= Wiki.first.title %> </h3>
-<p> <%= Wiki.first.body %></p> -->
-
 <h1>Wikis</h1>
+<%= link_to "New", new_wiki_path, class: 'btn btn-success' %>
 <% @wikis.each do |wiki| %>
-  <!-- <h4><%= link_to wiki.title, wiki_path(wiki.id) %></h4> -->
-  <!-- <p><%= wiki.body %></p> -->
   <div class="media">
     <div class="media-body">
       <h4 class="media-heading">
+        <%# link_to wiki.title, wiki_path(wiki) %>
         <%= link_to wiki.title, wiki %>
+        <%# link_to post.title, topic_post_path(@topic, post) %>
       </h4>
     </div>
   </div>
-
 <% end %>
