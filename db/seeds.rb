@@ -5,3 +5,14 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+for i in 1..25 do
+  Wiki.create!(
+    title: i.to_s << ': Seeded Wiki',
+    body: 'Body of seeds',
+    # user: User.first,
+    user_id: 1
+  )
+end
+puts "#{Wiki.count} Wikis"

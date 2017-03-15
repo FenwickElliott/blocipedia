@@ -1,20 +1,21 @@
-<div class='container'>
-  <div class='row'>
-    <div class='col-md-offset-4'>
-      <div class='col-md-4'>
-        <%= form_for @wiki do |f| %>
-          <%= f.label :title %>
-          <%= f.text_field :title %>
+<h1>Edit Wiki</h1>
 
-          <%= f.label :body %>
-          <%= f.text_area :body %>
-
-          <%= f.label :private %>
-          <%= f.check_box :private %>
-
-          <%= f.submit "Save" %>
-        <% end %>
+<div class='row'>
+  <div class='col-md-8 col-md-offset-2'>
+    <%= form_for @wiki do |f| %>
+      <div class='form-group'>
+        <%= f.label :title %>
+        <%= f.text_field :title, class: 'form-control' %>
       </div>
-    </div>
+      <div class='form-group'>
+        <%= f.label :body %>
+        <%= f.text_area :body, rows: 5, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :private %>
+        <%= f.check_box :private %>
+      </div>
+      <%= f.submit "Save", class: 'btn btn-success' %>
+    <% end %>
   </div>
 </div>
