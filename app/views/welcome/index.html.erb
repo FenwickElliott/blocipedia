@@ -1,18 +1,10 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-4">
-      <h3> <%= Wiki.first.title %> </h3>
-      <p> <%= Wiki.first.body %></p>
-    </div>
-    <div class="col-sm-4">
-      <h3>Column 2</h3>
-      <p>Lorem ipsum dolor..</p>
-      <p>Ut enim ad..</p>
-    </div>
-    <div class="col-sm-4">
-      <h3>Column 3</h3>
-      <p>Lorem ipsum dolor..</p>
-      <p>Ut enim ad..</p>
-    </div>
+    <% for i in 1..12 do %>
+      <div class="col-sm-4 clear">
+        <h3> <%= link_to Wiki.find(i).title, Wiki.find(i) %> </h3>
+        <p> <%= Wiki.find(i).body %></p>
+      </div>
+    <% end %>
   </div>
 </div>
