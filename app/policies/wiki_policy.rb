@@ -24,7 +24,6 @@ class WikiPolicy < ApplicationPolicy
 
   def update?
     user.admin?
-    # true
   end
 
   def edit?
