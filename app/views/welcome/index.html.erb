@@ -1,18 +1,10 @@
 <div class="container">
   <div class="row">
-    <% i = 1 %>
-    <% j = 13 %>
-    <%# for i in 1..j %>
-    <% while i < j %>
-      <% if Wiki.exists?(i) %>
-        <div class="col-sm-4 clear-fix">
-          <h3> <%= link_to Wiki.find(i).title, Wiki.find(i) %> </h3>
-          <p> <%= Wiki.find(i).body %></p>
-        </div>
-      <% else %>
-        <% j = j+ 1 %>
-      <% end %>
-      <% i = i + 1 %>
+    <% for i in 0..11 do %>
+      <div class="col-sm-4 clear-fix">
+        <h3> <%= link_to @wikis[i].title, @wikis[i] %> </h3>
+        <p> <%= @wikis[i].body %></h3>
+      </div>
     <% end %>
   </div>
 </div>
