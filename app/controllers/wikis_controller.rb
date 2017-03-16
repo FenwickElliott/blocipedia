@@ -40,8 +40,7 @@ class WikisController < ApplicationController
     # @wiki.private = params[:wiki][:private]
     @wiki.assign_attributes(wiki_params)
 
-    # authorize @wiki
-    # @wiki.save
+    authorize @wiki
     if @wiki.save
       flash[:notice] = "new wiki saved"
       redirect_to @wiki
