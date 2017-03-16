@@ -2,6 +2,7 @@ class WikiPolicy < ApplicationPolicy
   attr_reader :user, :wiki
 
   def initialize(user, wiki)
+    raise Pundit::NotAuthorizedError, "must be logged in" unless user
     @user = user
     @wiki = wiki
   end
@@ -15,7 +16,7 @@ class WikiPolicy < ApplicationPolicy
   end
 
   def create?
-    false
+    user
   end
 
   def new?
@@ -23,7 +24,7 @@ class WikiPolicy < ApplicationPolicy
   end
 
   def update?
-    user.admin?
+    user.admin? || wiki.user_id == user.id
   end
 
   def edit?
@@ -31,7 +32,7 @@ class WikiPolicy < ApplicationPolicy
   end
 
   def destroy?
-    false
+    user.admin? || wiki.user_id == user.id
   end
 
   def scope

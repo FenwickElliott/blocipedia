@@ -12,13 +12,10 @@ class WikisController < ApplicationController
   end
 
   def create
-
-    # @wiki = Wiki.new
-    # @wiki.title = params[:wiki][:title]
-    # @wiki.body = params[:wiki][:body]
-    # @wiki.private = params[:wiki][:private]
     @wiki = Wiki.new(wiki_params)
     @wiki.user = current_user
+
+    authorize @wiki
 
     if @wiki.save
       flash[:notice] = "new wiki saved"
@@ -35,15 +32,12 @@ class WikisController < ApplicationController
 
   def update
     @wiki = Wiki.find(params[:id])
-    # @wiki.title = params[:wiki][:title]
-    # @wiki.body = params[:wiki][:body]
-    # @wiki.private = params[:wiki][:private]
     @wiki.assign_attributes(wiki_params)
 
     authorize @wiki
 
     if @wiki.save
-      flash[:notice] = "new wiki saved"
+      flash[:notice] = "wiki updated"
       redirect_to @wiki
     else
       flash[:alert] = "no dice"
@@ -53,6 +47,8 @@ class WikisController < ApplicationController
 
   def destroy
     @wiki = Wiki.find(params[:id])
+
+    authorize @wiki
 
     if @wiki.destroy
       flash[:notice] = "\"#{@wiki.title}\" was deleted"

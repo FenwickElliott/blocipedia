@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   private
 
   def permission_denied
-    flash[:alert] = "Denied"
+    flash[:alert] = "Permission Denied"
     redirect_to(request.referrer || root_path)
   end
 end
