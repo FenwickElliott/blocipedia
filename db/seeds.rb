@@ -1,5 +1,13 @@
 require 'random_data'
 
+
+user = User.new
+user.update_attributes(
+  email: 'Charles@FenwickElliott.io',
+  password: '123456',
+  role: :admin,
+)
+
 user = User.new
 user.update_attributes(
     email: 'admin@eg.com',
@@ -20,6 +28,14 @@ user.update_attributes(
     password: '123456',
     role: :standard
     )
+
+16.times do
+  user = User.new
+  user.update_attributes(
+  email: Faker::Internet.unique.email,
+  password: '123456'
+  )
+end
 
 
 for i in 1..25 do
