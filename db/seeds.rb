@@ -3,6 +3,7 @@ require 'random_data'
 
 user = User.new
 user.update_attributes(
+  name: 'Charles',
   email: 'Charles@FenwickElliott.io',
   password: '123456',
   role: :admin,
@@ -10,30 +11,34 @@ user.update_attributes(
 
 user = User.new
 user.update_attributes(
-    email: 'admin@eg.com',
-    password: '123456',
-    role: :admin
-    )
+  name: 'admin',
+  email: 'admin@eg.com',
+  password: '123456',
+  role: :admin
+  )
 
 user = User.new
 user.update_attributes(
-    email: 'premium@eg.com',
-    password: '123456',
-    role: :premium
-    )
+  name: 'premium',
+  email: 'premium@eg.com',
+  password: '123456',
+  role: :premium
+  )
 
 user = User.new
 user.update_attributes(
-    email: 'standard@eg.com',
-    password: '123456',
-    role: :standard
-    )
+  name: 'standard',
+  email: 'standard@eg.com',
+  password: '123456',
+  role: :standard
+  )
 
 16.times do
   user = User.new
   user.update_attributes(
-  email: Faker::Internet.unique.email,
-  password: '123456'
+    name: Faker::Name.name,
+    email: Faker::Internet.unique.email,
+    password: '123456'
   )
 end
 
