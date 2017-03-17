@@ -17,6 +17,7 @@ class ChargesController < ApplicationController
     )
 
     flash[:notice] = "Thanks for all the money, #{current_user.email}! Feel free to pay me again."
+    current_user.update_attribute(:role, :premium)
   # ÷redirect_to user_path(current_user) # or wherever
     redirect_to wikis_path
 
