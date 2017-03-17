@@ -1,4 +1,5 @@
 class WikisController < ApplicationController
+  require 'redcarpet'
 
   def index
     @wikis = Wiki.all
