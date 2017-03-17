@@ -8,11 +8,15 @@ class WikiPolicy < ApplicationPolicy
   end
 
   def index?
-    false
+    true
   end
 
   def show?
-    scope.where(:id => record.id).exists?
+    # scope.where(:id => record.id).exists?
+    if wiki.private
+      allowed
+    end
+    true
   end
 
   def create?
@@ -20,19 +24,23 @@ class WikiPolicy < ApplicationPolicy
   end
 
   def new?
-    create?
+    user
   end
 
   def update?
-    user.admin? || wiki.user_id == user.id
+    allowed
   end
 
   def edit?
-    update?
+    allowed
   end
 
   def destroy?
-    user.admin? || wiki.user_id == user.id
+    allowed
+  end
+
+  def allowed
+    user.premium? || user.admin? || wiki.user_id == user.id
   end
 
   def scope
