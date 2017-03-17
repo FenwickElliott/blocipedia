@@ -12,7 +12,11 @@ class WikiPolicy < ApplicationPolicy
   end
 
   def show?
-    scope.where(:id => record.id).exists?
+    # scope.where(:id => record.id).exists?
+
+    if @user.premium? || @user.admin? || @wiki.user_id == @user.id
+      true
+    end
   end
 
   def create?
