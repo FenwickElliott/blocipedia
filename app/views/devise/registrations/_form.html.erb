@@ -3,7 +3,7 @@
 
   <div class="field">
     <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true, class: 'form-control', placeholder: "Enter name" %>
+    <%= f.text_field :uname, autofocus: true, class: 'form-control', placeholder: "Enter name" %>
   </div>
 
   <div class="field">
@@ -21,7 +21,14 @@
     <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control', placeholder: "Confirm password" %>
   </div>
 
+  <% if current_user %>
+    <div class="field">
+      <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+      <%= f.password_field :current_password, autocomplete: "off", class: 'form-control', placeholder: "Current password" %>
+    </div>
+  <% end %>
+
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "Submit", class: 'form-control' %>
   </div>
 <% end %>

@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   resources :charges, only: [:new, :create, :thanks]
 
   devise_for :users
+  # devise_for :users, :controllers => { registrations: 'registrations' }
+
   get 'welcome/index'
 
   get 'welcome/about'
