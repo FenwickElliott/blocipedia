@@ -1,10 +1,12 @@
-<!-- <div class="container-fluid">
+<div class="container-fluid">
   <div class="row clearfix">
     <% for i in 0..11 do %>
-      <div class="col-sm-4 clearfix">
-        <h3> <%= link_to @wikis[i].title, @wikis[i] %> </h3>
-        <p> <%= @wikis[i].body %></h3>
-      </div>
+      <% if @wikis[i] %>
+        <div class="col-sm-4 clearfix">
+          <h3> <%= link_to @wikis[i].title, @wikis[i] %> </h3>
+          <p> <%= @wikis[i].body %></h3>
+        </div>
+      <% end %>
     <% end %>
   </div>
-</div> -->
+</div>
